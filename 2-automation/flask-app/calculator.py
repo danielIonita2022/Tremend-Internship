@@ -1,3 +1,5 @@
+import signal
+import sys
 from flask import Flask, request, jsonify, render_template_string
 
 app = Flask(__name__)
@@ -70,6 +72,13 @@ def calculate():
         return jsonify({'error': 'Invalid operation'}), 400
         
     return jsonify({'result': result})
+
+def handle_shutdown(signum, frame):
+    print(f"Received signal {signum}: shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, handle_shutdown)
+signal.signal(signal.SIGTERM, handle_shutdown)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

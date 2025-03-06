@@ -42,3 +42,25 @@ The above commands push the tagged image to the created repository.
 
 ## Automation
 
+Workflow YAML file is located in .github/workflows, automating all the specified steps.
+
+Set up secrets in Github Actions:
+
+![secrets](screenshots/repository_secrets.png)
+
+Screenshot with Docker images tagged with commit SHA:
+
+![commit-sha-tags](screenshots/docker_hub_sha_tag.png)
+
+### Bonus
+
+Added code for the application to catch Docker container's stop signal and shut down gracefully.
+
+```python
+def handle_shutdown(signum, frame):
+    print(f"Received signal {signum}: shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, handle_shutdown)
+signal.signal(signal.SIGTERM, handle_shutdown)
+```
