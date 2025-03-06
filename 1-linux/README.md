@@ -105,7 +105,7 @@ service nginx restart
 
 If we run the first command again, the screenshot below shows the port has been changed:
 
-![Nginx changed port](/nginx_port_change.png)
+![Nginx changed port](nginx_port_change.png)
 
 ## • Modify the default HTML page title
 
@@ -117,4 +117,4 @@ Replace the text within the \<title> tag with "I have completed the Linux part o
 
 Screenshot of the modified index.html:
 
-![Nginx start page](/nginx_start_page.png)
+![Nginx start page](nginx_start_page.png)
